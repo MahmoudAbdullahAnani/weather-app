@@ -67,7 +67,7 @@ function App() {
         setCountry(country);
         setCityName(name);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   };
 
   // End Get Data
@@ -89,6 +89,36 @@ function App() {
   useEffect(() => {
     dataLocation();
   }, []);
+  if (temp===0) {
+    return (
+      <div className="modal-dialog w-100 text-white modal-fullscreen felx justify-center align-items-center   text-center ">
+        <div className="flex justify-center mt-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100"
+            height="100"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#ffffdf"
+            strokeWidth="2"
+            strokeLinecap="square"
+            strokeLinejoin="round"
+          >
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+          </svg>
+        </div>
+        <h1 className="px-5 text-left popup flex align-items-center justify-center">
+          It seems that the service has been stopped somewhat, and this is a
+          partial stop, which may be due to the internal maintenance of the
+          service or some improvements that work to develop the service to
+          improve the quality ... We wish you a happy day
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className="App container py-5 ">
       {/* icon, description, temp, country */}
