@@ -1,5 +1,4 @@
 import React from "react";
-import "./copyRight.css";
 const CopyRight = () => {
   return (
     //  position-absolute bottom-0 start-50 translate-middle-x w-100

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import date from "date-and-time";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,7 +11,7 @@ import { APICity, APIForecast, APIPoint } from "../Data/Atom";
 
 // import required modules
 import { Pagination } from "swiper";
-function Expectations2({ cityNameE }) {
+function Expectations4({ cityNameE }) {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -62,7 +60,6 @@ function Expectations2({ cityNameE }) {
   useEffect(() => {
     dataLocation();
   }, []);
-  // <h4>{date.parse(`${dayData[0].dt_txt.slice(0, 10)}`)}</h4>
   return (
     <div className="mt-4 rounded-lg bg-box">
       <Swiper
@@ -70,7 +67,7 @@ function Expectations2({ cityNameE }) {
         modules={[Pagination]}
         className="mySwiper "
       >
-        {dayData.slice(17, 25).map((dayData) => {
+        {dayData.slice(33).map((dayData) => {
           return (
             <SwiperSlide className="p-5" key={dayData.dt}>
               <div className="flex justify-around gap-3">
@@ -245,4 +242,4 @@ function Expectations2({ cityNameE }) {
   );
 }
 
-export default Expectations2;
+export default Expectations4;

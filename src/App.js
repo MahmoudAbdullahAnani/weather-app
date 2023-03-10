@@ -11,6 +11,7 @@ import { APICity, APIForecast, APIPoint } from "./Data/Atom";
 import Expectations1 from './Components/Expectations1';
 import Expectations2 from './Components/Expectations2';
 import Expectations3 from './Components/Expectations3';
+import Expectations4 from './Components/Expectations4';
 
 function App() {
   const [urlCity, setUrlCity] = useRecoilState(APICity);
@@ -143,6 +144,7 @@ function App() {
       <Expectations1 cityNameE={cityName} />
       <Expectations2 cityNameE={cityName} />
       <Expectations3 cityNameE={cityName} />
+      <Expectations4 cityNameE={cityName} />
     </div>
   );
 }

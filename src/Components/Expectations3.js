@@ -70,7 +70,7 @@ function Expectations3({ cityNameE }) {
         modules={[Pagination]}
         className="mySwiper "
       >
-        {dayData.slice(15, 20).map((dayData) => {
+        {dayData.slice(25, 33).map((dayData) => {
           return (
             <SwiperSlide className="p-5" key={dayData.dt}>
               <div className="flex justify-around gap-3">
