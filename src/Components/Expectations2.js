@@ -51,13 +51,14 @@ function Expectations2({ cityNameE }) {
       (data) => {
         setLon(data.coords.longitude);
         setLat(data.coords.latitude);
+        getDataByPonint();
       },
 
       (err) => console.log(err)
     );
   };
 
-  lon && getDataByPonint();
+  
 
   useEffect(() => {
     dataLocation();

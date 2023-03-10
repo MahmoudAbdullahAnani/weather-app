@@ -52,16 +52,13 @@ function Expectations({ cityNameE }) {
       (data) => {
         setLon(data.coords.longitude);
         setLat(data.coords.latitude);
+        getDataByPonint();
       },
 
       (err) => console.log(err)
     );
   };
 
-  lon && getDataByPonint();
-
-  // <h4>{date.parse(`${dayData[0].dt_txt.slice(0, 10)}`)}</h4>
-  // 2023-03-10 18:00:00
   
   useEffect(() => {
     dataLocation();
@@ -73,7 +70,7 @@ function Expectations({ cityNameE }) {
         modules={[Pagination]}
         className="mySwiper "
       >
-        {dayData.slice(0, 9).map((dayData) => {
+        {dayData.slice(0, 8).map((dayData) => {
           return (
             <SwiperSlide className="p-5" key={dayData.dt}>
               <div className="flex justify-around gap-3">

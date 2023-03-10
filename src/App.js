@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Main from "./Components/Main"
-import Expectations from './Components/Expectations';
-import VisibilityWind from './Components/VisibilityWind';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Main from "./Components/Main";
+import Expectations from "./Components/Expectations";
+import VisibilityWind from "./Components/VisibilityWind";
 
 import axios from "axios";
 
 import { useRecoilState } from "recoil";
-import { APICity, APIForecast, APIPoint } from "./Data/Atom";
-import Expectations1 from './Components/Expectations1';
-import Expectations2 from './Components/Expectations2';
-import Expectations3 from './Components/Expectations3';
-import Expectations4 from './Components/Expectations4';
+import { APIPoint } from "./Data/Atom";
+import Expectations1 from "./Components/Expectations1";
+import Expectations2 from "./Components/Expectations2";
+import Expectations3 from "./Components/Expectations3";
+import Expectations4 from "./Components/Expectations4";
 
 function App() {
-  const [urlCity, setUrlCity] = useRecoilState(APICity);
-  const [urlPoint, setPoint] = useRecoilState(APIPoint);
+  const [urlPoint] = useRecoilState(APIPoint);
   const [lon, setLon] = useState("31.3580405");
   const [lat, setLat] = useState("30.6347746");
   // Start Get Data
-  const [main, setMain] = useState("Clear");
+  const [, setMain] = useState("Clear");
   const [description, setDescription] = useState("clear sky");
 
   const [icon, setIcon] = useState("01d");
-  const [img, setimg] = useState(null);
 
   const [temp, setTemp] = useState(0);
   const [humidity, setHumidity] = useState(0);
@@ -93,7 +91,7 @@ function App() {
   useEffect(() => {
     dataLocation();
   }, []);
-  if (temp===0) {
+  if (temp === 0) {
     return (
       <div className="modal-dialog w-100 text-white modal-fullscreen felx justify-center align-items-center   text-center ">
         <div className="flex justify-center mt-3">

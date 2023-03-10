@@ -49,13 +49,14 @@ function Expectations4({ cityNameE }) {
       (data) => {
         setLon(data.coords.longitude);
         setLat(data.coords.latitude);
+        getDataByPonint();
       },
 
       (err) => console.log(err)
     );
   };
 
-  lon && getDataByPonint();
+
 
   useEffect(() => {
     dataLocation();
@@ -65,7 +66,7 @@ function Expectations4({ cityNameE }) {
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
-        className="mySwiper "
+        className="mySwiper"
       >
         {dayData.slice(33).map((dayData) => {
           return (

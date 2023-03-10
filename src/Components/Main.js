@@ -1,8 +1,92 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import date from "date-and-time";
+import { useRecoilState } from "recoil";
+import { APIPoint, CitysEG } from "../Data/Atom";
+import axios from "axios";
 
 function Main({ icon, description, temp, country, cityName }) {
   const now = new Date();
+  const [cityEG, ] = useRecoilState(CitysEG);
+  const [citySelect, setCitySelect] = useState("");
+  const [urlPoint, ] = useRecoilState(APIPoint);
+  // Start Get Data
+  const [, setMainSelect] = useState("Clear");
+  const [descriptionSelect, setDescriptionSelect] = useState("clear sky");
+
+  const [iconSelect, setIconSelect] = useState("01d");
+
+  const [tempSelect, setTempSelect] = useState(0);
+  const [humiditySelect, setHumiditySelect] = useState(0);
+
+  const [visibilitySelect, setVisibilitySelect] = useState(0);
+  const [windSpeedSelect, setWindSpeedSelect] = useState(0);
+  const [windDegSelect, setWindDegSelect] = useState(0);
+  const [windGustSelect, setWindGustSelect] = useState(0);
+
+  const [countrySelect, setCountrySelect] = useState("Egypt");
+  const [cityNameSelect, setCityNameSelect] = useState("Mansour");
+  const getDataByPonint = () => {
+    // GET request for remote image in node.js
+    cityEG &&
+      axios({
+        method: "get",
+        url: `${urlPoint}lon=${citySelect.slice(0, 7)}&lat=${citySelect.slice(
+          10
+        )}`,
+        responseType: "stream",
+      })
+        .then(function (response) {
+          const dataWeather = JSON.parse(response.data);
+          const { main } = dataWeather.weather[0];
+        const { description } = dataWeather.weather[0];
+        const { icon } = dataWeather.weather[0];
+        setMainSelect(main);
+        setDescriptionSelect(description);
+        setIconSelect(icon);
+        // temp
+        const { temp } = dataWeather.main;
+        const { humidity } = dataWeather.main;
+        setTempSelect(temp);
+        setHumiditySelect(humidity);
+        // visibility
+        const { visibility } = dataWeather;
+        const { speed } = dataWeather.wind;
+        const { deg } = dataWeather.wind;
+        const { gust } = dataWeather.wind;
+        setVisibilitySelect(visibility);
+        setWindSpeedSelect(speed);
+        setWindDegSelect(deg);
+        setWindGustSelect(gust);
+        // country
+        const { country } = dataWeather.sys;
+        const { name } = dataWeather;
+        setCountrySelect(country);
+        setCityNameSelect(name);
+        })
+        .catch((err) => console.log(err.message));
+  };
+
+  // End Get Data
+  const [lon, setLon] = useState("31.3580405");
+  const [, setLat] = useState("30.6347746");
+  // Start Get Data Loction User
+  const dataLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (data) => {
+        setLon(data.coords.longitude);
+        setLat(data.coords.latitude);
+        getDataByPonint();
+      },
+
+      (err) => console.log(err)
+    );
+  };
+
+  
+
+  useEffect(() => {
+    dataLocation();
+  }, []);
   return (
     <div>
       {/* Image */}
@@ -71,12 +155,29 @@ function Main({ icon, description, temp, country, cityName }) {
             <span className="mb-1">{date.format(now, "dddd HH:mm")}</span>
           </h3>
         </div>
+        {/* Data */}
         <div className="col-xs-10 col-md-5 col-lg-3">
-          <h1 className="text-7xl ">{Math.round(temp)}°C</h1>
+          <div>
+            <select
+              className="px-4 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500  font-semibold fs-4"
+              name="cars"
+              onChange={(e) => setCitySelect(e.target.value)}
+              id="cars"
+            >
+              {cityEG.map((cityEGYPT) => {
+                return (
+                  <option
+                    value={`${cityEGYPT.lat} | ${cityEGYPT.lng}`}
+                    key={cityEGYPT.city}
+                  >
+                    {cityEGYPT.city}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         </div>
       </div>
-      {/* Data */}
-      <div></div>
     </div>
   );
 }
