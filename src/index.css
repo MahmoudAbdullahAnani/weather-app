@@ -23,9 +23,9 @@ code {
 
 .bg-box{
   border-radius: 50px;
-background: linear-gradient(145deg, #cacacad7, #f0f0f0cf);
-box-shadow:  20px 20px 60px #bebebedb,
-             -20px -20px 60px #ffffffd1;
+background: linear-gradient(145deg, #ff006c, #e5187f);
+box-shadow:  20px 20px 60px #bebebecc,
+             -20px -20px 60px #ffffffb9;
 }
 .popup{
   height: 100vh;

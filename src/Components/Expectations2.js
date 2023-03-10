@@ -62,9 +62,9 @@ function Expectations2({ cityNameE }) {
   useEffect(() => {
     dataLocation();
   }, []);
+  // <h4>{date.parse(`${dayData[0].dt_txt.slice(0, 10)}`)}</h4>
   return (
     <div className="mt-4 rounded-lg bg-box">
-      <h4>{date.parse(`${dayData[0].dt_txt.slice(0, 10)}`)}</h4>
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -72,7 +72,7 @@ function Expectations2({ cityNameE }) {
       >
         {dayData.slice(10, 15).map((dayData) => {
           return (
-            <SwiperSlide className="p-5">
+            <SwiperSlide className="p-5" key={dayData.dt}>
               <div className="flex justify-around gap-3">
                 <div>
                   <h3>{dayData.weather[0].main}</h3>

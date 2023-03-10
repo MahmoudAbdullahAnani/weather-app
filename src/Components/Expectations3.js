@@ -13,7 +13,7 @@ import { APICity, APIForecast, APIPoint } from "../Data/Atom";
 
 // import required modules
 import { Pagination } from "swiper";
-function Expectations1({ cityNameE }) {
+function Expectations3({ cityNameE }) {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -70,7 +70,7 @@ function Expectations1({ cityNameE }) {
         modules={[Pagination]}
         className="mySwiper "
       >
-        {dayData.slice(5, 10).map((dayData) => {
+        {dayData.slice(15, 20).map((dayData) => {
           return (
             <SwiperSlide className="p-5" key={dayData.dt}>
               <div className="flex justify-around gap-3">
@@ -245,4 +245,4 @@ function Expectations1({ cityNameE }) {
   );
 }
 
-export default Expectations1;
+export default Expectations3;
