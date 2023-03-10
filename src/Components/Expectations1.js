@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import date from "date-and-time";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 import axios from "axios";
-import date from "date-and-time";
 
 import { useRecoilState } from "recoil";
 import { APICity, APIForecast, APIPoint } from "../Data/Atom";
 
-
 // import required modules
 import { Pagination } from "swiper";
-function Expectations({ cityNameE }) {
+function Expectations1({ cityNameE }) {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -60,9 +59,6 @@ function Expectations({ cityNameE }) {
 
   lon && getDataByPonint();
 
-
-
-
   useEffect(() => {
     dataLocation();
   }, []);
@@ -74,7 +70,7 @@ function Expectations({ cityNameE }) {
         modules={[Pagination]}
         className="mySwiper "
       >
-        {dayData.slice(0, 5).map((dayData) => {
+        {dayData.slice(5, 10).map((dayData) => {
           return (
             <SwiperSlide className="p-5">
               <div className="flex justify-around gap-3">
@@ -249,4 +245,4 @@ function Expectations({ cityNameE }) {
   );
 }
 
-export default Expectations;
+export default Expectations1;

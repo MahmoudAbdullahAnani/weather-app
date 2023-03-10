@@ -8,6 +8,8 @@ import axios from "axios";
 
 import { useRecoilState } from "recoil";
 import { APICity, APIForecast, APIPoint } from "./Data/Atom";
+import Expectations1 from './Components/Expectations1';
+import Expectations2 from './Components/Expectations2';
 
 function App() {
   const [urlCity, setUrlCity] = useRecoilState(APICity);
@@ -137,6 +139,8 @@ function App() {
         humidity={humidity}
       />
       <Expectations cityNameE={cityName} />
+      <Expectations1 cityNameE={cityName} />
+      <Expectations2 cityNameE={cityName} />
     </div>
   );
 }
