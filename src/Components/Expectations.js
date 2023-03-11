@@ -90,7 +90,7 @@ function Expectations({ cityNameE }) {
                     className="w-40"
                     width={`100`}
                     height={`100`}
-                    src={`http://openweathermap.org/img/w/${dayData.weather[0].icon}.png`}
+                    src={`https://openweathermap.org/img/w/${dayData.weather[0].icon}.png`}
                     alt={dayData.weather[0].main}
                   />
                 </div>
