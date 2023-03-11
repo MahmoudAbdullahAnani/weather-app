@@ -130,19 +130,13 @@ function App() {
         temp={temp}
         country={country}
         cityName={cityName}
-      />
-      <VisibilityWind
         visibility={visibility}
         windSpeed={windSpeed}
         windDeg={windDeg}
         windGust={windGust}
         humidity={humidity}
+        cityNameE={cityName}
       />
-      <Expectations cityNameE={cityName} />
-      <Expectations1 cityNameE={cityName} />
-      <Expectations2 cityNameE={cityName} />
-      <Expectations3 cityNameE={cityName} />
-      <Expectations4 cityNameE={cityName} />
     </div>
   );
 }
