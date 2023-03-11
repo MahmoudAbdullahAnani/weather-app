@@ -32,7 +32,7 @@ function Expectations4({ cityNameE }) {
     // GET request for remote image in node.js
     axios({
       method: "get",
-      url: `${urlForecast}${cityNameE}`,
+      url: `http://api.openweathermap.org/data/2.5/forecast?units=metric&appid=deb1bc65cd1afa8674fe12755514a180&q=Alexandria`,
       responseType: "stream",
     })
       .then(function (response) {
