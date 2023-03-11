@@ -35,7 +35,7 @@ function Expectations({ cityNameE }) {
     // GET request for remote image in node.js
     axios({
       method: "get",
-      url: `${urlForecast}${cityNameE}`,
+      url: `${urlForecast}Ţalkhā`,
       responseType: "stream",
     })
       .then(function (response) {
